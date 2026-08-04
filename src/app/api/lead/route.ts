@@ -55,9 +55,27 @@ export async function POST(req: NextRequest) {
   if (!nm) return bad("Нэрээ оруулна уу.");
   if (!validPhone) return bad("Утасны дугаар 8 оронтой байх ёстой.");
 
-  const url = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+  /**
+   * Hosting-ийн панелд хуулахдаа хашилт, зай санамсаргүй орох нь их тохиолддог
+   * (жишээ нь `"https://…"`). Тэднийг цэвэрлэж, хэлбэрийг шалгана.
+   */
+  const url = (process.env.GOOGLE_SHEETS_WEBHOOK_URL ?? "")
+    .trim()
+    .replace(/^['"]+|['"]+$/g, "")
+    .trim();
+
   if (!url) {
     console.error("[LEAD] GOOGLE_SHEETS_WEBHOOK_URL тохируулаагүй байна.");
+    return bad("Сервер тохируулагдаагүй байна. Утсаар холбогдоно уу.", 500);
+  }
+
+  if (!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url)) {
+    console.error(
+      "[LEAD] Webhook хаягийн хэлбэр буруу. Урт: " +
+        url.length +
+        ", төгсгөл: …" +
+        url.slice(-12)
+    );
     return bad("Сервер тохируулагдаагүй байна. Утсаар холбогдоно уу.", 500);
   }
 
@@ -73,15 +91,16 @@ export async function POST(req: NextRequest) {
         model: typeof model === "string" ? model : "JETOUR G700",
         secret: process.env.GOOGLE_SHEETS_SECRET ?? "",
       }),
-      signal: AbortSignal.timeout(8000),
+      // Apps Script нь заримдаа удаан хариулдаг (cold start) — 15 сек хүлээнэ
+      signal: AbortSignal.timeout(15000),
     });
 
     if (!res.ok) {
-      console.error("[LEAD] Sheets webhook " + res.status + ": " + (await res.text()));
+      console.error("[LEAD] Sheets webhook " + res.status + ": " + (await res.text()).slice(0, 300));
       return bad("Илгээхэд алдаа гарлаа. Дахин оролдоно уу.", 502);
     }
   } catch (e) {
-    console.error("[LEAD] Sheets: " + (e instanceof Error ? e.message : String(e)));
+    console.error("[LEAD] Sheets: " + (e instanceof Error ? e.name + " " + e.message : String(e)));
     return bad("Илгээхэд алдаа гарлаа. Дахин оролдоно уу.", 502);
   }
 
