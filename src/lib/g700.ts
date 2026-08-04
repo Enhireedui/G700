@@ -40,8 +40,8 @@ export const G700 = {
   interior: [
     { image: I("black-red"), imageMobile: I("black-red-tall"), caption: "15.6 инчийн төв мэдрэгч дэлгэц" },
     { image: I("black-orange"), imageMobile: I("black-orange-tall"), caption: "Төв самбар — улбар шар" },
-    { image: I("cabin-black"), imageMobile: I("cabin-black-tall"), caption: "Уужим салон — хар" },
-    { image: I("cabin-orange"), imageMobile: I("cabin-orange-tall"), caption: "Уужим салон — улбар шар" },
+    { image: I("cabin-black"), imageMobile: I("cabin-black-tall"), caption: "Салон — хар" },
+    { image: I("cabin-orange"), imageMobile: I("cabin-orange-tall"), caption: "Салон — улбар шар" },
     { image: I("rear-red"), imageMobile: I("rear-red-tall"), caption: "Хойд эгнээ — хар" },
     { image: I("rear-orange"), imageMobile: I("rear-orange-tall"), caption: "Хойд эгнээ — улбар шар" },
   ] satisfies Slide[],
