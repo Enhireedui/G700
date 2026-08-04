@@ -32,7 +32,7 @@ export const G700 = {
   exterior: [
     { image: W("dusk"), caption: "904 м.х, XWD 7+X горим" },
     { image: W("rock-red"), caption: "Хүрээт их бие — 5198 мм урт" },
-    { image: W("climb"), caption: "Газрын цэвэрлэгээ 230 мм" },
+    { image: W("climb"), caption: "Газраас тэнхлэг хүртэл 230 мм" },
     { image: W("canyon"), caption: "Тэнхлэг хоорондын зай 2870 мм" },
     { image: W("water-aerial"), caption: "Ус туулах чадвар 900–970 мм" },
   ] satisfies Slide[],
@@ -81,7 +81,7 @@ export const G700 = {
       { value: "1,300–1,400 км", label: "Нийт туулах зай" },
       { value: "100–150 км", label: "Цахилгаан горимын туулах зай" },
       { value: "900–970 мм", label: "Ус туулах чадвар" },
-      { value: "230 мм", label: "Газрын цэвэрлэгээ" },
+      { value: "230 мм", label: "Газраас тэнхлэг хүртэл" },
     ],
 
     /** Тоогоор илэрхийлэгдэхгүй үзүүлэлтүүд */
