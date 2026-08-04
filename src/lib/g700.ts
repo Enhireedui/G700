@@ -92,5 +92,5 @@ export const CONTACT = {
   phone1Href: "tel:+97672778855",
   phone2: "8910-0274",
   phone2Href: "tel:+97689100274",
-  email: "info@sainmotors.mn",
+  email: "marketing2@esain.mn",
 } as const;
