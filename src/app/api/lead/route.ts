@@ -23,8 +23,8 @@ function allowed(ip: string) {
   return true;
 }
 
-function bad(error: string, status = 400) {
-  return NextResponse.json({ ok: false, error }, { status });
+function bad(error: string, status = 400, code?: string) {
+  return NextResponse.json({ ok: false, error, ...(code ? { code } : {}) }, { status });
 }
 
 export async function POST(req: NextRequest) {
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
 
   if (!url) {
     console.error("[LEAD] GOOGLE_SHEETS_WEBHOOK_URL тохируулаагүй байна.");
-    return bad("Сервер тохируулагдаагүй байна. Утсаар холбогдоно уу.", 500);
+    return bad("Сервер тохируулагдаагүй байна. Утсаар холбогдоно уу.", 500, "no-url");
   }
 
   if (!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url)) {
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
         ", төгсгөл: …" +
         url.slice(-12)
     );
-    return bad("Сервер тохируулагдаагүй байна. Утсаар холбогдоно уу.", 500);
+    return bad("Сервер тохируулагдаагүй байна. Утсаар холбогдоно уу.", 500, "bad-url-format");
   }
 
   try {
