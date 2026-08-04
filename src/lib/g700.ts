@@ -32,9 +32,9 @@ export const G700 = {
   exterior: [
     { image: W("dusk"), caption: "904 м.х, XWD 7+X горим" },
     { image: W("rock-red"), caption: "Хүрээт их бие — 5198 мм урт" },
-    { image: W("climb"), caption: "Газраас тэнхлэг хүртэл 230 мм" },
+    { image: W("climb"), caption: "Газрын цэвэрлэгээ 230 мм" },
     { image: W("canyon"), caption: "Тэнхлэг хоорондын зай 2870 мм" },
-    { image: W("water-aerial"), caption: "Ус туулах гүн 900–970 мм" },
+    { image: W("water-aerial"), caption: "Ус туулах чадвар 900–970 мм" },
   ] satisfies Slide[],
 
   interior: [
@@ -66,23 +66,29 @@ export const G700 = {
   video: {
     src: "/models/g700/video/tankturn.mp4",
     poster: W("rock"),
-    title: "Tank Turn",
+    title: "360° Tank Turn",
   },
 
   specs: {
     image: W("cover"),
     dimensions: { length: "5198 мм", width: "2050 мм", height: "1956 мм" },
-    rows: [
-      { label: "Морины хүч", value: "904 м.х" },
-      { label: "Мушгих хүч", value: "1,135 Нм" },
-      { label: "0–100 км/ц", value: "4.6 секунд" },
-      { label: "Хөдөлгүүр / хурдны хайрцаг", value: "2.0 Турбо + 2DHT" },
-      { label: "Хөтлөгч систем", value: "XWD ухаалаг 4WD — 7+X горим" },
-      { label: "Нийт туулах зам (цахилгаан + бензин)", value: "1,300–1,400 км" },
-      { label: "Цэвэр цахилгаан туулах зай", value: "100–150 км" },
-      { label: "Ус туулах гүн", value: "900–970 мм" },
-      { label: "Газраас тэнхлэг хүртэл", value: "230 мм" },
-      { label: "Их биеийн бүтэц", value: "Хүрээт (Body-on-frame)" },
+
+    /** Том тоогоор онцолж харуулах гол үзүүлэлтүүд */
+    figures: [
+      { value: "904 м.х", label: "Хамгийн их чадал" },
+      { value: "1,135 Нм", label: "Хамгийн их мушгих хүч" },
+      { value: "4.6 сек", label: "0–100 км/ц хурдатгал" },
+      { value: "1,300–1,400 км", label: "Нийт туулах зай" },
+      { value: "100–150 км", label: "Цахилгаан горимын туулах зай" },
+      { value: "900–970 мм", label: "Ус туулах чадвар" },
+      { value: "230 мм", label: "Газрын цэвэрлэгээ" },
+    ],
+
+    /** Тоогоор илэрхийлэгдэхгүй үзүүлэлтүүд */
+    details: [
+      { label: "Хөдөлгүүр ба дамжуулга", value: "2.0 Турбо + 2DHT" },
+      { label: "Хөтлөгч", value: "XWD ухаалаг 4WD — 7+X горим" },
+      { label: "Их биеийн хийц", value: "Хүрээт (Body-on-frame)" },
     ],
   },
 } as const;

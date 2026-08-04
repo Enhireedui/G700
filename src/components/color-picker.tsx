@@ -15,7 +15,7 @@ export function ColorPicker() {
     <section id="colors" className="section-pad bg-white overflow-hidden">
       <div className="text-center mb-8 lg:mb-10 px-6">
         <h2 className="type-h2 text-[#17181B] mb-2">{G700.name}</h2>
-        <p className="text-[#6B7280] text-base lg:text-lg">Өнгөний сонголт</p>
+        <p className="text-[#6B7280] text-base lg:text-lg">Өнгөний сонголтууд</p>
       </div>
 
       <div

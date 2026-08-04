@@ -51,11 +51,9 @@ export function OrderForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="type-h2 text-[#17181B] mb-5">
-            Урьдчилсан захиалга өгч анхны эзэмшигч болоорой.
-          </h2>
+          <h2 className="type-h2 text-[#17181B] mb-5">Урьдчилсан захиалга</h2>
           <p className="type-lead mb-7 max-w-md">
-            Манай баг 24 цагийн дотор тантай холбогдож дэлгэрэнгүй мэдээлэл өгнө.
+            Холбоо барих мэдээллээ үлдээнэ үү. Манай зөвлөх удахгүй тантай холбогдох болно.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
@@ -92,22 +90,21 @@ export function OrderForm() {
                   Захиалгын хүсэлт
                 </h3>
               </div>
-              <p className="text-sm text-[#54585F] mb-5">Та холбогдох мэдээллээ үлдээнэ үү.</p>
 
-              <div className="space-y-4">
+              <div className="mt-5 space-y-4">
                 <div>
                   <label
                     htmlFor="nm"
                     className="block text-[0.6rem] tracking-[0.18em] uppercase text-[#6B7280] font-semibold mb-1.5"
                   >
-                    Нэр
+                    Овог, нэр
                   </label>
                   <input
                     id="nm"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     autoComplete="name"
-                    placeholder="Таны нэр"
+                    placeholder="Бат-Эрдэнэ"
                     className="w-full rounded-xl border-2 border-[#DDDEE1] bg-white px-4 py-3.5 text-[15px] outline-none transition-colors focus:border-[#E20A17]"
                   />
                 </div>
@@ -116,7 +113,7 @@ export function OrderForm() {
                     htmlFor="ph"
                     className="block text-[0.6rem] tracking-[0.18em] uppercase text-[#6B7280] font-semibold mb-1.5"
                   >
-                    Утас
+                    Утасны дугаар
                   </label>
                   <input
                     id="ph"
@@ -124,7 +121,7 @@ export function OrderForm() {
                     onChange={(e) => setPhone(e.target.value)}
                     inputMode="tel"
                     autoComplete="tel"
-                    placeholder="8800 0000"
+                    placeholder="9911 2233"
                     className="w-full rounded-xl border-2 border-[#DDDEE1] bg-white px-4 py-3.5 text-[15px] outline-none transition-colors focus:border-[#E20A17]"
                   />
                 </div>
@@ -140,12 +137,12 @@ export function OrderForm() {
                 {state === "sending" ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
-                  "Захиалга илгээх"
+                  "Захиалга бүртгүүлэх"
                 )}
               </button>
 
               <p className="mt-3 text-[0.6875rem] leading-relaxed text-[#6B7280] text-center">
-                Илгээснээр таны мэдээллийг зөвхөн холбоо барих зорилгоор ашиглана.
+                Илгээсэн мэдээллийг зөвхөн эргэн холбогдох зорилгоор ашиглана.
               </p>
             </form>
           )}

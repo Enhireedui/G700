@@ -373,9 +373,13 @@ export function CinematicSlider({
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Цэгүүд — 4px зурвас, гэхдээ 44px товших талбайтай */}
+          {/*
+            Progress bar индикатор — идэвхтэй зурвас автомат гүйлтийн хугацаанд
+            дүүрч, дараагийн слайд хэзээ солигдохыг харуулна (premium маяг).
+            Товших талбай 44px хэвээр.
+          */}
           <div
-            className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1"
+            className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5"
             role="tablist"
             aria-label="Слайд сонгох"
           >
@@ -386,16 +390,30 @@ export function CinematicSlider({
                 onClick={() => goTo(i)}
                 aria-label={`${i + 1}-р зураг`}
                 aria-selected={i === index}
-                className="relative grid place-items-center h-11 w-11"
+                className="relative grid place-items-center h-11 px-0.5"
               >
                 <span
-                  className={`block h-1 rounded-full transition-all duration-500 ${
-                    i === index ? "w-8 bg-[#E20A17]" : "w-3.5 bg-white/50 hover:bg-white/80"
+                  className={`block h-[3px] rounded-full overflow-hidden transition-all duration-500 ${
+                    i === index ? "w-10 bg-white/30" : "w-4 bg-white/35 hover:bg-white/60"
                   }`}
-                />
+                >
+                  {i === index && (
+                    <span
+                      key={`fill-${page}`}
+                      className="block h-full rounded-full bg-[#E20A17]"
+                      style={
+                        autoplay && !reduce && !paused && !dragging
+                          ? { animation: `cs-fill ${interval}ms linear forwards` }
+                          : { width: "100%" }
+                      }
+                    />
+                  )}
+                </span>
               </button>
             ))}
           </div>
+
+          <style>{`@keyframes cs-fill{from{width:0%}to{width:100%}}`}</style>
         </>
       )}
 

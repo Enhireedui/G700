@@ -64,18 +64,18 @@ export default function Page() {
           <h1 className="sr-only">{G700.name}</h1>
         </section>
 
-        {/* ── Гадна үзэмж ── */}
+        {/* ── Экстерьер ── */}
         <section id="exterior" className="bg-white pt-16 lg:pt-20 overflow-hidden scroll-mt-16">
           <div className="container-page mb-6">
-            <h2 className="type-h2 text-[#17181B]">Гадна үзэмж</h2>
+            <h2 className="type-h2 text-[#17181B]">Экстерьер</h2>
           </div>
           <ShowcaseSlider slides={G700.exterior} alt={G700.name} />
         </section>
 
-        {/* ── Дотор салон ── */}
+        {/* ── Интерьер ── */}
         <section id="interior" className="bg-[#F5F5F6] pt-16 lg:pt-20 overflow-hidden scroll-mt-16">
           <div className="container-page mb-6">
-            <h2 className="type-h2 text-[#17181B]">Дотор салон</h2>
+            <h2 className="type-h2 text-[#17181B]">Интерьер</h2>
           </div>
           <ShowcaseSlider slides={G700.interior} alt={G700.name} />
         </section>
@@ -84,18 +84,30 @@ export default function Page() {
         <VideoBlock src={G700.video.src} poster={G700.video.poster} title={G700.video.title} />
 
         {/* ── Онцлох боломжууд ── */}
-        <FeatureSlider items={featureItems} alt={G700.name} heading="Онцлох боломжууд" />
+        <FeatureSlider items={featureItems} alt={G700.name} heading="Онцлох технологи" />
 
         {/* ── Өнгөний сонголт ── */}
         <ColorPicker />
 
-        {/* ── Техник үзүүлэлт ── */}
+        {/* ── Үндсэн үзүүлэлтүүд ── */}
         <section id="specs" className="section-pad bg-[#F5F5F6] scroll-mt-16">
           <div className="container-page">
-            <h2 className="type-h2 text-[#17181B] mb-10">Техник үзүүлэлт</h2>
+            <h2 className="type-h2 text-[#17181B] mb-10">Үндсэн үзүүлэлтүүд</h2>
 
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-              <div className="lg:sticky lg:top-24">
+            {/* Гол тоонууд — том, богино гарчигтай (premium брэндийн маяг) */}
+            <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-[#E7E7EA] rounded-2xl overflow-hidden border border-[#E7E7EA]">
+              {G700.specs.figures.map((f) => (
+                <div key={f.label} className="bg-white p-5 lg:p-6">
+                  <dd className="font-extrabold tracking-tight text-[#17181B] text-xl lg:text-[1.75rem] leading-none">
+                    {f.value}
+                  </dd>
+                  <dt className="mt-2 text-[0.8125rem] leading-snug text-[#6B7280]">{f.label}</dt>
+                </div>
+              ))}
+            </dl>
+
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mt-10 lg:mt-14">
+              <div>
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-white border border-[#E7E7EA]">
                   <Image
                     src={G700.specs.image}
@@ -128,7 +140,7 @@ export default function Page() {
 
               <div>
                 <dl className="divide-y divide-[#E7E7EA] border-y border-[#E7E7EA]">
-                  {G700.specs.rows.map((row) => (
+                  {G700.specs.details.map((row) => (
                     <div
                       key={row.label}
                       className="flex items-baseline justify-between gap-6 py-3.5"

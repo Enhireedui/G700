@@ -59,7 +59,7 @@ export function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logos/jetour-white.png" alt="JETOUR" className="h-9 w-auto" />
           <p className="text-sm text-white/50 mt-3">
-            SAIN MOTORS — албан ёсны дистрибьютер
+            SAIN MOTORS — Монгол дахь албан ёсны дистрибьютер
           </p>
         </div>
 
