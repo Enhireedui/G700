@@ -103,7 +103,7 @@ GOOGLE_SHEETS_SECRET=
 | 1 | Hero слайдер (3 зураг) | [`cinematic-slider.tsx`](src/components/cinematic-slider.tsx) |
 | 2 | Гадна үзэмж (5) | [`showcase-slider.tsx`](src/components/showcase-slider.tsx) |
 | 3 | Дотор салон (6) | ↑ мөн адил |
-| 4 | Байрандаа эргэх горим — бичлэг | [`video-block.tsx`](src/components/video-block.tsx) |
+| 4 | Tank Turn — бичлэг | [`video-block.tsx`](src/components/video-block.tsx) |
 | 5 | Онцлох боломжууд (4) | [`feature-slider.tsx`](src/components/feature-slider.tsx) |
 | 6 | Өнгөний сонголт (6) | [`color-picker.tsx`](src/components/color-picker.tsx) |
 | 7 | Техник үзүүлэлт | [`page.tsx`](src/app/page.tsx) |

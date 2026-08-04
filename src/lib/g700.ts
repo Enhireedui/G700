@@ -66,7 +66,7 @@ export const G700 = {
   video: {
     src: "/models/g700/video/tankturn.mp4",
     poster: W("rock"),
-    title: "Байрандаа эргэх горим (Tank Turn)",
+    title: "Tank Turn",
   },
 
   specs: {
