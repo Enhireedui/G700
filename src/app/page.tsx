@@ -1,7 +1,5 @@
-import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { G700 } from "@/lib/g700";
-import { BLUR_DATA_URL } from "@/lib/image";
 import { Header, Footer } from "@/components/site-chrome";
 import { CinematicSlider, type CinematicSlide } from "@/components/cinematic-slider";
 import { ShowcaseSlider } from "@/components/showcase-slider";
@@ -89,80 +87,54 @@ export default function Page() {
         {/* ── Өнгөний сонголт ── */}
         <ColorPicker />
 
-        {/* ── Үндсэн үзүүлэлтүүд ── */}
-        <section id="specs" className="section-pad bg-[#F5F5F6] scroll-mt-16">
+        {/* ── Үндсэн үзүүлэлтүүд ──
+             Хүрээ, карт, зураггүй. Зөвхөн том тоо, богино гарчиг, нарийн
+             зураас — албан ёсны үзүүлэлтийн хуудасны цэвэр бүтэц. */}
+        <section id="specs" className="section-pad bg-white scroll-mt-16">
           <div className="container-page">
-            <h2 className="type-h2 text-[#17181B] mb-10">Үндсэн үзүүлэлтүүд</h2>
+            <h2 className="type-h2 text-[#17181B] mb-12 lg:mb-16">Үндсэн үзүүлэлтүүд</h2>
 
-            {/* Гол тоонууд — том, богино гарчигтай (premium брэндийн маяг) */}
-            <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-[#E7E7EA] rounded-2xl overflow-hidden border border-[#E7E7EA]">
+            <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10 lg:gap-y-12">
               {G700.specs.figures.map((f) => (
-                <div key={f.label} className="bg-white p-5 lg:p-6">
-                  <dd className="font-extrabold tracking-tight text-[#17181B] text-xl lg:text-[1.75rem] leading-none">
+                <div key={f.label}>
+                  <dd className="font-extrabold tracking-[-0.02em] text-[#17181B] text-[1.625rem] lg:text-[2rem] leading-none">
                     {f.value}
                   </dd>
-                  <dt className="mt-2 text-[0.8125rem] leading-snug text-[#6B7280]">{f.label}</dt>
+                  <dt className="mt-2.5 text-[0.8125rem] leading-snug text-[#6B7280]">
+                    {f.label}
+                  </dt>
                 </div>
               ))}
             </dl>
 
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start mt-10 lg:mt-14">
-              <div>
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-white border border-[#E7E7EA]">
-                  <Image
-                    src={G700.specs.image}
-                    alt={G700.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    placeholder="blur"
-                    blurDataURL={BLUR_DATA_URL}
-                    className="object-cover"
-                  />
+            <dl className="mt-14 lg:mt-20 border-t border-[#E7E7EA]">
+              {[
+                ...G700.specs.details,
+                {
+                  label: "Овор хэмжээ",
+                  value: `${G700.specs.dimensions.length.replace(" мм", "")} × ${G700.specs.dimensions.width.replace(" мм", "")} × ${G700.specs.dimensions.height}`,
+                },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  className="flex items-baseline justify-between gap-6 py-4 border-b border-[#E7E7EA]"
+                >
+                  <dt className="text-sm text-[#6B7280]">{row.label}</dt>
+                  <dd className="text-sm lg:text-[0.9375rem] font-semibold text-[#17181B] text-right">
+                    {row.value}
+                  </dd>
                 </div>
-                <div className="grid grid-cols-3 gap-3 mt-4">
-                  {[
-                    { label: "Урт", value: G700.specs.dimensions.length },
-                    { label: "Өргөн", value: G700.specs.dimensions.width },
-                    { label: "Өндөр", value: G700.specs.dimensions.height },
-                  ].map((d) => (
-                    <div
-                      key={d.label}
-                      className="rounded-xl border border-[#E7E7EA] bg-white py-4 text-center"
-                    >
-                      <p className="text-[0.65rem] tracking-[0.16em] uppercase text-[#6B7280] mb-1">
-                        {d.label}
-                      </p>
-                      <p className="font-bold text-base lg:text-lg text-[#17181B]">{d.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
+            </dl>
 
-              <div>
-                <dl className="divide-y divide-[#E7E7EA] border-y border-[#E7E7EA]">
-                  {G700.specs.details.map((row) => (
-                    <div
-                      key={row.label}
-                      className="flex items-baseline justify-between gap-6 py-3.5"
-                    >
-                      <dt className="text-sm text-[#54585F]">{row.label}</dt>
-                      <dd className="font-bold text-sm lg:text-base text-[#17181B] text-right shrink-0">
-                        {row.value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div className="pt-7">
-                  <a
-                    href="#order"
-                    className="btn-electric-jetour inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm"
-                  >
-                    Урьдчилсан захиалга
-                    <ArrowDown className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+            <div className="mt-12">
+              <a
+                href="#order"
+                className="btn-electric-jetour inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm"
+              >
+                Урьдчилсан захиалга
+                <ArrowDown className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </section>
